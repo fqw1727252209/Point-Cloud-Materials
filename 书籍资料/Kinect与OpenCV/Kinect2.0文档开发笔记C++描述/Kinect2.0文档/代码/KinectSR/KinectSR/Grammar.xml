@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<grammar version="1.0" xml:lang="zh-CN" mode="voice" root="根语音" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+    <rule id="根语音" scope="public">
+        <one-of>
+            <item>
+                <ruleref uri="#发现东西"/>
+                <tag> out.发现东西 = rules.发现东西; </tag>
+            </item>
+            <item>
+                <ruleref uri="#战况"/>
+                <tag> out.战况 = rules.战况; </tag>
+            </item>
+        </one-of>
+    </rule>
+
+    <rule id="战况">
+        <example> 我们击毁了敌方厕所 </example>
+        <example> 他们击穿我方的装甲 </example>
+        
+        <ruleref uri="#人物对象"/>
+        <tag> out.主语 = rules.人物对象; </tag>
+        <ruleref uri="#战况动词"/>
+        <tag> out.谓语 = rules.战况动词; </tag>
+        <item repeat="0-1">了</item>
+        <ruleref uri="#人物对象"/>
+        <tag> out.对象 = rules.人物对象; </tag>
+        <item repeat="0-1">的</item>
+        <ruleref uri="#战况名词"/>
+        <tag> out.宾语 = rules.战况名词; </tag>
+    </rule>
+    
+    <rule id="人物对象">
+        <example> 我们 </example>
+        <example> 他们 </example>
+
+        <one-of>
+            <item>我们<tag>out=0;</tag></item>
+            <item>他们<tag>out=1;</tag></item>
+            <item>我方<tag>out=0;</tag></item>
+            <item>敌方<tag>out=1;</tag></item>
+        </one-of>
+    </rule>
+    
+    <rule id="战况动词">
+        <example> 击毁 </example>
+        <example> 击败 </example>
+
+        <one-of>
+            <item>击毁<tag>out=0;</tag></item>
+            <item>击败<tag>out=1;</tag></item>
+            <item>击穿<tag>out=2;</tag></item>
+        </one-of>
+    </rule>
+    
+    <rule id="战况名词">
+        <example> 装甲 </example>
+        <example> 计算机 </example>
+
+        <one-of>
+            <item>装甲<tag>out=0;</tag></item>
+            <item>厕所<tag>out=1;</tag></item>
+            <item>计算机<tag>out=2;</tag></item>
+            <item>电脑<tag>out=2;</tag></item>
+            <item>核弹发射井<tag>out=3;</tag></item>
+        </one-of>
+    </rule>
+
+    <rule id="发现东西">
+        <example> 我在脚上发现两枚穿甲弹 </example>
+
+        <item>我在</item>
+        <ruleref uri="#地点"/>
+        <tag> out.地点 = rules.地点; </tag>
+        <ruleref uri="#相对位置"/>
+        <item>发现</item>
+        <item repeat="0-1">了</item>
+        <ruleref uri="#数量"/>
+        <tag> out.数量 = rules.数量; </tag>
+        <ruleref uri="#量词"/>
+        <ruleref uri="#目标物体"/>
+        <tag> out.物体 = rules.目标物体; </tag>
+    </rule>
+
+    <rule id="地点">
+        <example> 脚 </example>
+        <example> 房子 </example>
+
+        <one-of>
+            <item>脚<tag>out=0;</tag></item>
+            <item>房子<tag>out=1;</tag></item>
+            <item>船<tag>out=2;</tag></item>
+            <item>头<tag>out=3;</tag></item>
+        </one-of>
+    </rule>
+
+    <rule id="相对位置">
+        <example> 上 </example>
+
+        <one-of>
+            <item>上</item>
+            <item>上面</item>
+            <item>里面</item>
+            <item>旁边</item>
+            <item>附近</item>
+        </one-of>
+    </rule>
+    
+    <rule id="数量">
+        <example> 两 </example>
+
+        <one-of>
+            <item>一<tag>out=1;</tag></item>
+            <item>二<tag>out=2;</tag></item>
+            <item>两<tag>out=2;</tag></item>
+            <item>三<tag>out=3;</tag></item>
+            <item>四<tag>out=4;</tag></item>
+            <item>五<tag>out=5;</tag></item>
+            <item>六<tag>out=6;</tag></item>
+            <item>七<tag>out=7;</tag></item>
+            <item>八<tag>out=8;</tag></item>
+            <item>九<tag>out=9;</tag></item>
+            <item>十<tag>out=10;</tag></item>
+        </one-of>
+    </rule>
+
+    <rule id="量词">
+        <example> 枚 </example>
+
+        <one-of>
+            <item>枚</item>
+            <item>个</item>
+            <item>块</item>
+            <item>片</item>
+            <item>辆</item>
+            <item>架</item>
+            <item>次</item>
+            <item>部</item>
+            <item>台</item>
+            <item>把</item>
+        </one-of>
+    </rule>
+    
+    <rule id="目标物体">
+        <example> 坦克 </example>
+
+        <one-of>
+            <item>高爆穿甲弹<tag>out=0;</tag></item>
+            <item>穿甲弹<tag>out=1;</tag></item>
+            <item>坦克<tag>out=2;</tag></item>
+            <item>铅笔<tag>out=3;</tag></item>
+            <item>电脑<tag>out=4;</tag></item>
+            <item>苹果<tag>out=5;</tag></item>
+            <item>锤子<tag>out=6;</tag></item>
+            <item>手机<tag>out=7;</tag></item>
+            <item>阿姆斯特朗回旋加速喷气式阿姆斯特朗炮<tag>out=8;</tag></item>
+        </one-of>
+    </rule>
+</grammar>

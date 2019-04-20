@@ -1,0 +1,28 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Direct2DTemplate</Name>
+    <Description>D2D模板</Description>
+    <ProjectType>VC</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Direct2DTemplate</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="FreeType01.vcxproj" File="FreeType01.vcxproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="false" TargetFileName="$projectname$.vcxproj.filters">FreeType01.vcxproj.filters</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="main.cpp">main.cpp</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="ThisApp.cpp">ThisApp.cpp</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="ImagaRenderer.cpp">ImagaRenderer.cpp</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="stdafx.h">stdafx.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="ImagaRenderer.h">ImagaRenderer.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="ThisApp.h">ThisApp.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="included.h">included.h</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>
